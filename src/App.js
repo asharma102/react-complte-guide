@@ -19,12 +19,12 @@ const app = props => {
     })
     console.log(personsState, otherState)
 
-    const switchNameHandler = () => {
+    const switchNameHandler = (name) => {
     //console.log('was click');
         //Dont do it - this.state.person[0].name="Maximilian";
         setPersonsState({
           person:[
-            {name:'Maximilian', age:28},
+            {name:name, age:28},
             {name:'Sam', age:29},
             {name:'maTan', age:26}
           ]
@@ -34,7 +34,7 @@ const app = props => {
     return (
       <div className="App">
         <h1>hello</h1>
-        <button onClick={switchNameHandler} >Switch Name</button>
+        <button onClick={()=>switchNameHandler('abhi')} >Switch Name</button>
         <Person 
         name={personsState.person[0].name} 
         age={personsState.person[0].age}
@@ -43,7 +43,7 @@ const app = props => {
         <Person 
         name={personsState.person[1].name} 
         age={personsState.person[1].age}
-        click={switchNameHandler} >My hobbie: Racing
+        click={()=>switchNameHandler('Max')} >My hobbie: Racing
         </Person>
         <Person name={personsState.person[2].name} age={personsState.person[2].age}/>
       </div>
