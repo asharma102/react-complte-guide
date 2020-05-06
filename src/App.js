@@ -40,11 +40,18 @@ const app = props => {
         ]
       })
     }
+    const style = {
+      backgroudColor: 'white',
+      font: 'inherit',
+      border: '2px solid blue',
+      padding: '8px'
+    }
 
     return (
+      
       <div className="App">
         <h1>hello</h1>
-        <button onClick={()=>switchNameHandler('abhi')} >Switch Name</button>
+        <button style={style} onClick={()=>switchNameHandler('abhi')} >Switch Name</button>
         <Person 
         name={personsState.person[0].name} 
         age={personsState.person[0].age}
