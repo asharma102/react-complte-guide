@@ -1,87 +1,96 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Person from './Person/Person'
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Person from "./Person/Person";
 
-const app = props => {
+const app = (props) => {
+  const [personsState, setPersonsState] = useState({
+    person: [
+      { id: "asd", name: "max", age: 28 },
+      { id: "dfg", name: "Sam", age: 29 },
+      { id: "ryt", name: "maTan", age: 26 },
+    ],
+  });
 
-  
-    const [personsState, setPersonsState] = useState({
-        person:[
-          {name:'max', age:28},
-          {name:'Sam', age:29},
-          {name:'maTan', age:26}
-        ]
-       });
+  const [otherState, setOtherState] = useState({
+    otherState: "some other state",
+  });
 
-    const [otherState, setOtherState] = useState ({
-      otherState : "some other state"
+  const [showPesrsonState, setShowPesrsonState] = useState({
+    showPerson: false,
+  });
+
+  console.log(personsState, otherState, showPesrsonState);
+
+  // const switchNameHandler = (name) => {
+  // //console.log('was click');
+  //     //Dont do it - this.state.person[0].name="Maximilian";
+  //     setPersonsState({
+  //       person:[
+  //         {name:name, age:28},
+  //         {name:'Sam', age:29},
+  //         {name:'maTan', age:26}
+  //       ]
+  //     })
+  //   };
+
+  const deletePersonHandler = (personIndex) => {
+    const persons = [...personsState.person];
+    persons.splice(personIndex, 1);
+    setPersonsState({ person: persons });
+  };
+
+  const nameChangeHandler = (event, id) => {
+
+    const personsIndex = personsState.person.findIndex(
+      p => {
+        return p.id === id
+      }
+    );
+
+    const person = { ...personsState.person[personsIndex] }
+
+    person.name = event.target.value;
+
+    const persons = [...personsState.person]
+
+    persons[personsIndex] = person
+
+    setPersonsState({
+      person: persons
+    })
+  };
+
+  const togglePersonHandler = () => {
+    setShowPesrsonState({
+      showPerson: !showPesrsonState.showPerson,
     });
+  };
 
-    const [showPesrsonState, setShowPesrsonState] = useState ({
-      showPerson : false
-    });
+  const style = {
+    backgroudColor: "white",
+    font: "inherit",
+    border: "2px solid blue",
+    padding: "8px",
+  };
 
-    console.log(personsState, otherState, showPesrsonState)
+  let displayPerson = null;
 
-    // const switchNameHandler = (name) => {
-    // //console.log('was click');
-    //     //Dont do it - this.state.person[0].name="Maximilian";
-    //     setPersonsState({
-    //       person:[
-    //         {name:name, age:28},
-    //         {name:'Sam', age:29},
-    //         {name:'maTan', age:26}
-    //       ]
-    //     })
-    //   };
-
-    const deletePersonHandler = (personIndex) => {
-      const persons= [...personsState.person];
-      persons.splice(personIndex,1)
-      setPersonsState ({person:persons})
-    }
-
-    const nameChangeHandler =(event) => {
-      setPersonsState({
-        person:[
-          {name:'max', age:28},
-          {name: event.target.value, age:29},
-          {name:'maTan', age:27}
-        ]
-      })
-    }
-
-    const togglePersonHandler = () => {
-      
-      setShowPesrsonState({
-        showPerson : !showPesrsonState.showPerson
-      })
-    }
-
-    const style = {
-      backgroudColor: 'white',
-      font: 'inherit',
-      border: '2px solid blue',
-      padding: '8px'
-    }
-
-     
-    let displayPerson = null;
-    
-    if (showPesrsonState.showPerson) {
-      displayPerson = (
-        <div>
-          {
-            personsState.person.map((personList,index) => {
-              return <Person 
-                        name={personList.name} 
-                        age={personList.age}
-                        click={()=>deletePersonHandler(index)}
-                      />
-            })
-          }
-          {/* <Person 
+  if (showPesrsonState.showPerson) {
+    displayPerson = (
+      <div>
+        {personsState.person.map((personList, index) => {
+          return (
+            <Person
+              name={personList.name}
+              age={personList.age}
+              click={() => deletePersonHandler(index)}
+              key={personList.id}
+              changed={(event) => nameChangeHandler(event, personList.id)}
+            />
+          );
+        })}
+        {/* <Person 
             name={personsState.person[0].name} 
             age={personsState.person[0].age}
             />
@@ -94,29 +103,23 @@ const app = props => {
           <Person 
             name={personsState.person[2].name} 
             age={personsState.person[2].age}/> */}
-        </div>
-        )
-    }
-
-    return (
-      
-      <div className="App">
-        <h1>hello</h1>
-        <button 
-          style={style} 
-          onClick={togglePersonHandler} >
-            Toggle Name
-        </button>
-        <div>
-          {displayPerson}
-        </div> 
       </div>
     );
   }
+
+  return (
+    <div className="App">
+      <h1>hello</h1>
+      <button style={style} onClick={togglePersonHandler}>
+        Toggle Name
+      </button>
+      <div>{displayPerson}</div>
+    </div>
+  );
+};
 //}
 
 export default app;
-
 
 //Class based
 
