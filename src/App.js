@@ -24,17 +24,23 @@ const app = props => {
 
     console.log(personsState, otherState, showPesrsonState)
 
-    const switchNameHandler = (name) => {
-    //console.log('was click');
-        //Dont do it - this.state.person[0].name="Maximilian";
-        setPersonsState({
-          person:[
-            {name:name, age:28},
-            {name:'Sam', age:29},
-            {name:'maTan', age:26}
-          ]
-        })
-      };
+    // const switchNameHandler = (name) => {
+    // //console.log('was click');
+    //     //Dont do it - this.state.person[0].name="Maximilian";
+    //     setPersonsState({
+    //       person:[
+    //         {name:name, age:28},
+    //         {name:'Sam', age:29},
+    //         {name:'maTan', age:26}
+    //       ]
+    //     })
+    //   };
+
+    const deletePersonHandler = (personIndex) => {
+      const persons= [...personsState.person];
+      persons.splice(personIndex,1)
+      setPersonsState ({person:persons})
+    }
 
     const nameChangeHandler =(event) => {
       setPersonsState({
@@ -66,7 +72,16 @@ const app = props => {
     if (showPesrsonState.showPerson) {
       displayPerson = (
         <div>
-          <Person 
+          {
+            personsState.person.map((personList,index) => {
+              return <Person 
+                        name={personList.name} 
+                        age={personList.age}
+                        click={()=>deletePersonHandler(index)}
+                      />
+            })
+          }
+          {/* <Person 
             name={personsState.person[0].name} 
             age={personsState.person[0].age}
             />
@@ -78,7 +93,7 @@ const app = props => {
           </Person>
           <Person 
             name={personsState.person[2].name} 
-            age={personsState.person[2].age}/>
+            age={personsState.person[2].age}/> */}
         </div>
         )
     }
