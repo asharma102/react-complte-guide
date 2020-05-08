@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Radium, { StyleRoot } from 'radium'
+import styled from 'styled-components'
+
 import logo from "./logo.svg";
 import "./App.css";
 import Person from "./Person/Person";
@@ -68,27 +69,15 @@ const app = (props) => {
     });
   };
 
-  const style = {
-    backgroundColor: 'green',
-    color: 'white',
-    font: "inherit",
-    border: "2px solid blue",
-    padding: "8px",
-    cursor: "pointer",
-    ':hover': {
-      backgroundColor: 'lightgreen',
-      color: 'black'
-    }
-  };
 
   let displayPerson = null;
 
   if (showPesrsonState.showPerson) {
-    style.backgroundColor = 'red'
-    style[':hover'] = {
-      backgroundColor: "#cf5a4f",
-      color: 'black'
-    }
+    // style.backgroundColor = 'red'
+    // style[':hover'] = {
+    //   backgroundColor: "#cf5a4f",
+    //   color: 'black'
+    // }
     displayPerson = (
 
       <div>
@@ -129,22 +118,36 @@ const app = (props) => {
     classes.push('bold');
   }
 
+  const StyledButton = styled.button`
+    background-color: ${props => props.alt ? 'red' : 'green'};
+    color: white;
+    font: inherit;
+    border: 2px solid blue;
+    padding: 8px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
+      color: black;
+    }
+  `;
+
   return (
-    <StyleRoot>
-      <div className="App">
-        <h1>I am a React App</h1>
-        <p className={classes.join(' ')}>This is really working</p>
-        <button style={style} onClick={togglePersonHandler}>
-          Toggle Name
-      </button>
-        <div>{displayPerson}</div>
-      </div>
-    </StyleRoot>
+
+    <div className="App">
+      <h1>I am a React App</h1>
+      <p className={classes.join(' ')}>This is really working</p>
+      <StyledButton alt={showPesrsonState.showPerson} onClick={togglePersonHandler}>
+        Toggle Name
+      </StyledButton>
+      <div>{displayPerson}</div>
+    </div>
+
   );
 };
 //}
 
-export default Radium(app);
+export default app;
 
 //Class based
 
