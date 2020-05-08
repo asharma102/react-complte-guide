@@ -68,7 +68,8 @@ const app = (props) => {
   };
 
   const style = {
-    backgroudColor: "white",
+    backgroundColor: 'green',
+    color: 'white',
     font: "inherit",
     border: "2px solid blue",
     padding: "8px",
@@ -77,7 +78,9 @@ const app = (props) => {
   let displayPerson = null;
 
   if (showPesrsonState.showPerson) {
+    style.backgroundColor = 'red';
     displayPerson = (
+
       <div>
         {personsState.person.map((personList, index) => {
           return (
@@ -105,6 +108,7 @@ const app = (props) => {
             age={personsState.person[2].age}/> */}
       </div>
     );
+
   }
 
   return (
