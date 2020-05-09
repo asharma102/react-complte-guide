@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import styled from 'styled-components'
-
 import logo from "./logo.svg";
-import "./App.css";
+import style from "./App.css";
 import Person from "./Person/Person";
 
 const app = (props) => {
@@ -24,17 +22,6 @@ const app = (props) => {
 
   console.log(personsState, otherState, showPesrsonState);
 
-  // const switchNameHandler = (name) => {
-  // //console.log('was click');
-  //     //Dont do it - this.state.person[0].name="Maximilian";
-  //     setPersonsState({
-  //       person:[
-  //         {name:name, age:28},
-  //         {name:'Sam', age:29},
-  //         {name:'maTan', age:26}
-  //       ]
-  //     })
-  //   };
 
   const deletePersonHandler = (personIndex) => {
     const persons = [...personsState.person];
@@ -71,15 +58,13 @@ const app = (props) => {
 
 
   let displayPerson = null;
+  let btnClass = [style.Button];
+
+
 
   if (showPesrsonState.showPerson) {
-    // style.backgroundColor = 'red'
-    // style[':hover'] = {
-    //   backgroundColor: "#cf5a4f",
-    //   color: 'black'
-    // }
+    btnClass.push(style.Red);
     displayPerson = (
-
       <div>
         {personsState.person.map((personList, index) => {
           return (
@@ -92,54 +77,29 @@ const app = (props) => {
             />
           );
         })}
-        {/* <Person 
-            name={personsState.person[0].name} 
-            age={personsState.person[0].age}
-            />
-          <Person 
-            name={personsState.person[1].name} 
-            age={personsState.person[1].age}
-            click={()=>switchNameHandler('Max')}
-            changed={nameChangeHandler} >My hobbie: Racing
-          </Person>
-          <Person 
-            name={personsState.person[2].name} 
-            age={personsState.person[2].age}/> */}
       </div>
+
     );
 
   }
 
   let classes = [];
   if (personsState.person.length <= 2) {
-    classes.push('red');
+    classes.push(style.red);
   }
   if (personsState.person.length <= 1) {
-    classes.push('bold');
+    classes.push(style.bold);
   }
 
-  const StyledButton = styled.button`
-    background-color: ${props => props.alt ? 'red' : 'green'};
-    color: white;
-    font: inherit;
-    border: 2px solid blue;
-    padding: 8px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
-      color: black;
-    }
-  `;
 
   return (
 
-    <div className="App">
+    <div className={style.App}>
       <h1>I am a React App</h1>
       <p className={classes.join(' ')}>This is really working</p>
-      <StyledButton alt={showPesrsonState.showPerson} onClick={togglePersonHandler}>
+      <button className={btnClass.join(' ')} onClick={togglePersonHandler}>
         Toggle Name
-      </StyledButton>
+      </button>
       <div>{displayPerson}</div>
     </div>
 

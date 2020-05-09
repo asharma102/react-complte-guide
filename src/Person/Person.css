@@ -1,8 +1,15 @@
-/* .Person {
+.Person {
     width: 60%;
-    margin: 16px auto; 
+    margin: 16px auto;
     border: 1px solid #ccc;
     border-bottom: 3px solid #ccc;
     padding: 16px;
     text-align: center;
-} */
+
+}
+
+@media (min-width:500px) {
+    .Person {
+        width: '450px'
+    }
+}
