@@ -1,5 +1,6 @@
 import React from 'react';
 import stylePerson from './Person.css';
+import persons from '../Persons'
 //import react-dom from 'react-dom'
 
 
