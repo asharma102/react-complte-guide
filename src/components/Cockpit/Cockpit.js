@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import style from './Cockpit.css';
 
 const cockpit = (props) => {
 
+    useEffect(() => {
+        console.log('[cockpit.js] use')
+    })
+
     let classes = [];
     let btnClass = '';
     console.log(btnClass);
-    if (props.persons.length <= 2) {
+    if (props.personsLength <= 2) {
         classes.push(style.red);
     }
-    if (props.persons.length <= 1) {
+    if (props.personsLength <= 1) {
         classes.push(style.bold);
     }
 
@@ -18,7 +22,7 @@ const cockpit = (props) => {
     }
     return (
         <div className={style.Cockpit}>
-            <h1>I am a React App</h1>
+            <h1>{props.title}</h1>
             <p className={classes.join(' ')}>This is really working</p>
             <button className={btnClass} onClick={props.clicked}>
                 Toggle Name

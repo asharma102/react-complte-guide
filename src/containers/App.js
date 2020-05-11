@@ -80,7 +80,8 @@ const app = (props) => {
 
     <div className={style.App}>
       <Cockpit
-        persons={personsState.person}
+        title={props.appTitle}
+        personsLength={personsState.person.length}
         showPerson={showPesrsonState.showPerson}
         clicked={togglePersonHandler}
       />
