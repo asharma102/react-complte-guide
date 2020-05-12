@@ -3,7 +3,14 @@ import React from "react";
 const withClass = props => (
     <div className={props.classes}>
         {props.children}
-        {/* <p style={{ backgroundColor: "red" }}>Hello Coming from HOC</p> */}
+        <div style={{
+            backgroundColor: "lightyellow",
+            width: "50%",
+            padding: "10px",
+            border: "3px solid brown",
+            margin: "0 auto",
+            marginTop: "20px"
+        }}>Hello this text is Coming from HOC and this can come included anywhere if we warp any component with this HOC </div>
     </div >
 );
 
