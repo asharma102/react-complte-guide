@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import style from "./App.css";
-import Persons from "../components/Persons/Persons";
-import Cockpit from "../components/Cockpit/Cockpit";
-import withClass from "../hoc/withClass";
-import Aux from "../hoc/Aux";
+import React, { useState } from 'react';
+import style from './App.css';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit';
+import withClass from '../hoc/withClass';
+import Aux from '../hoc/Aux';
 
 const App = (props) => {
   const [personsState, setPersonsState] = useState({
     person: [
-      { id: "asd", name: "max", age: 28 },
-      { id: "dfg", name: "Sam", age: 29 },
-      { id: "ryt", name: "maTan", age: 26 },
+      { id: 'asd', name: 'max', age: 28 },
+      { id: 'dfg', name: 'Sam', age: 29 },
+      { id: 'ryt', name: 'maTan', age: 26 },
     ],
   });
 
   const [otherState, setOtherState] = useState({
-    otherState: "some other state",
+    otherState: 'some other state',
   });
 
   const [showPesrsonState, setShowPesrsonState] = useState({
     showPerson: false,
   });
 
-  //console.log(personsState, otherState, showPesrsonState);
+  // console.log(personsState, otherState, showPesrsonState);
 
 
   const deletePersonHandler = (personIndex) => {
@@ -32,24 +32,21 @@ const App = (props) => {
   };
 
   const nameChangeHandler = (event, id) => {
-
     const personsIndex = personsState.person.findIndex(
-      p => {
-        return p.id === id
-      }
+      p => p.id === id,
     );
 
-    const person = { ...personsState.person[personsIndex] }
+    const person = { ...personsState.person[personsIndex] };
 
     person.name = event.target.value;
 
-    const persons = [...personsState.person]
+    const persons = [...personsState.person];
 
-    persons[personsIndex] = person
+    persons[personsIndex] = person;
 
     setPersonsState({
-      person: persons
-    })
+      person: persons,
+    });
   };
 
   const togglePersonHandler = () => {
@@ -60,8 +57,7 @@ const App = (props) => {
 
 
   let displayPerson = null;
-  let btnClass = [style.Button];
-
+  const btnClass = [style.Button];
 
 
   if (showPesrsonState.showPerson) {
@@ -75,7 +71,6 @@ const App = (props) => {
       </div>
 
     );
-
   }
 
   return (
@@ -92,11 +87,11 @@ const App = (props) => {
 
   );
 };
-//}
+// }
 
 export default withClass(App, style.App);
 
-//Class based
+// Class based
 
 // import React, { Component } from 'react';
 // import logo from './logo.svg';

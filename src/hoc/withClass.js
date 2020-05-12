@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 // const withClass = props => (
 //     <div className={props.classes}>
@@ -16,12 +16,10 @@ import React from "react";
 
 // export default withClass;
 
-const withClass = (WrappedComponent, className) => {
-    return props => (
+const withClass = (WrappedComponent, className) => props => (
 
-        <div className={className}>
-            <WrappedComponent />
-        </div >
-    );
-}
+  <div className={className}>
+    <WrappedComponent />
+  </div >
+);
 export default withClass;
