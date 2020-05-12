@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import style from "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
-import WithClass from "../hoc/withClass";
+import withClass from "../hoc/withClass";
+import Aux from "../hoc/Aux";
 
-const app = (props) => {
+const App = (props) => {
   const [personsState, setPersonsState] = useState({
     person: [
       { id: "asd", name: "max", age: 28 },
@@ -79,7 +80,7 @@ const app = (props) => {
 
   return (
 
-    <WithClass classes={style.App}>
+    <Aux>
       <Cockpit
         title={props.appTitle}
         personsLength={personsState.person.length}
@@ -87,13 +88,13 @@ const app = (props) => {
         clicked={togglePersonHandler}
       />
       <div>{displayPerson}</div>
-    </WithClass>
+    </Aux>
 
   );
 };
 //}
 
-export default app;
+export default withClass(App, style.App);
 
 //Class based
 
