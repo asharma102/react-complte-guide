@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 import style from './Cockpit.css';
+import WithClass from "../../hoc/withClass";
 
 const cockpit = (props) => {
 
-    useEffect(() => {
-        console.log('[cockpit.js] use')
-    })
+    // useEffect(() => {
+    //     //console.log('[cockpit.js] use')
+    // })
 
     let classes = [];
     let btnClass = '';
-    console.log(btnClass);
+    //console.log(btnClass);
     if (props.personsLength <= 2) {
         classes.push(style.red);
     }
@@ -21,13 +22,13 @@ const cockpit = (props) => {
         btnClass = style.Red
     }
     return (
-        <div className={style.Cockpit}>
+        <WithClass classes={style.Cockpit}>
             <h1>{props.title}</h1>
             <p className={classes.join(' ')}>This is really working</p>
             <button className={btnClass} onClick={props.clicked}>
                 Toggle Name
             </button>
-        </div>
+        </WithClass>
     )
 }
 export default cockpit;

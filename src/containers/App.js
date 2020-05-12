@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./App.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import WithClass from "../hoc/withClass";
 
 const app = (props) => {
   const [personsState, setPersonsState] = useState({
@@ -20,7 +21,7 @@ const app = (props) => {
     showPerson: false,
   });
 
-  console.log(personsState, otherState, showPesrsonState);
+  //console.log(personsState, otherState, showPesrsonState);
 
 
   const deletePersonHandler = (personIndex) => {
@@ -78,7 +79,7 @@ const app = (props) => {
 
   return (
 
-    <div className={style.App}>
+    <WithClass classes={style.App}>
       <Cockpit
         title={props.appTitle}
         personsLength={personsState.person.length}
@@ -86,7 +87,7 @@ const app = (props) => {
         clicked={togglePersonHandler}
       />
       <div>{displayPerson}</div>
-    </div>
+    </WithClass>
 
   );
 };
