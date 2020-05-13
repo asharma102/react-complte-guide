@@ -5,10 +5,10 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
 
-const App = () => {
+const App = (props) => {
   const [personsState, setPersonsState] = useState({
     person: [
-      { id: 'asd', name: 'max', age: 28 },
+      { id: 'asd', name: 'max', age: '28' },
       { id: 'dfg', name: 'Sam', age: 29 },
       { id: 'ryt', name: 'maTan', age: 26 },
     ],
@@ -23,7 +23,6 @@ const App = () => {
   });
 
   // console.log(personsState, otherState, showPesrsonState);
-
 
   const deletePersonHandler = (personIndex) => {
     const persons = [...personsState.person];
@@ -76,7 +75,7 @@ const App = () => {
 
     <Aux>
       <Cockpit
-        title="Person Manager"
+        title={props.appTitle}
         personsLength={personsState.person.length}
         showPerson={showPesrsonState.showPerson}
         clicked={togglePersonHandler}

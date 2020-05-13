@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import stylePerson from './Person.css';
+
 // import persons from '../Persons';
 // import react-dom from 'react-dom'
 
@@ -14,5 +16,11 @@ const person = props => (
     <div>Adjacent Div</div>
   </React.Fragment>
 );
+person.PropTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func,
+};
 
 export default person;
