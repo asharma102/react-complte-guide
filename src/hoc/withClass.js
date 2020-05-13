@@ -10,14 +10,15 @@ import React from 'react';
 //             border: "3px solid brown",
 //             margin: "0 auto",
 //             marginTop: "20px"
-//         }}>Hello this text is Coming from HOC and this can come included anywhere if we warp any component with this HOC </div>
+//         }}>
+//      Hello this text is Coming from HOC and this can come included anywhere
+// if we warp any component with this HOC </div>
 //     </div >
 // );
 
 // export default withClass;
 
-const withClass = (WrappedComponent, className) => props => (
-
+const withClass = (WrappedComponent, className) => () => (
   <div className={className}>
     <WrappedComponent />
   </div >

@@ -5,7 +5,7 @@ import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
 
-const App = (props) => {
+const App = () => {
   const [personsState, setPersonsState] = useState({
     person: [
       { id: 'asd', name: 'max', age: 28 },
@@ -14,9 +14,9 @@ const App = (props) => {
     ],
   });
 
-  const [otherState, setOtherState] = useState({
-    otherState: 'some other state',
-  });
+  // const [otherState, setOtherState] = useState({
+  //   otherState: 'some other state',
+  // });
 
   const [showPesrsonState, setShowPesrsonState] = useState({
     showPerson: false,
@@ -57,8 +57,7 @@ const App = (props) => {
 
 
   let displayPerson = null;
-  const btnClass = [style.Button];
-
+  // const btnClass = [style.Button];
 
   if (showPesrsonState.showPerson) {
     displayPerson = (
@@ -77,7 +76,7 @@ const App = (props) => {
 
     <Aux>
       <Cockpit
-        title={props.appTitle}
+        title="Person Manager"
         personsLength={personsState.person.length}
         showPerson={showPesrsonState.showPerson}
         clicked={togglePersonHandler}
@@ -125,7 +124,8 @@ export default withClass(App, style.App);
 //         <h1>hello</h1>
 //         <button onClick={this.switchNameHandler} >Switch Name</button>
 //         <Person name={this.state.person[0].name} age={this.state.person[0].age}/>
-//         <Person name={this.state.person[1].name} age={this.state.person[1].age}>My hobbie: Racing</Person>
+//         <Person name={this.state.person[1].name} age={this.state.person[1].age}>
+// My hobbie: Racing</Person>
 //         <Person name={this.state.person[2].name} age={this.state.person[2].age}/>
 //       </div>
 //     );
