@@ -4,6 +4,7 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 import withClass from '../hoc/withClass';
 import Aux from '../hoc/Aux';
+import AuthContext from '../context/auth-context';
 
 const App = (props) => {
   const [personsState, setPersonsState] = useState({
@@ -14,9 +15,7 @@ const App = (props) => {
     ],
   });
 
-  // const [otherState, setOtherState] = useState({
-  //   otherState: 'some other state',
-  // });
+  const [authenticated, setAuthenticatedState] = useState(false);
 
   const [showPesrsonState, setShowPesrsonState] = useState({
     showPerson: false,
@@ -54,6 +53,10 @@ const App = (props) => {
     });
   };
 
+  const loginHandler = () => {
+    setAuthenticatedState(true);
+  };
+
 
   let displayPerson = null;
   // const btnClass = [style.Button];
@@ -74,13 +77,20 @@ const App = (props) => {
   return (
 
     <Aux>
-      <Cockpit
-        title={props.appTitle}
-        personsLength={personsState.person.length}
-        showPerson={showPesrsonState.showPerson}
-        clicked={togglePersonHandler}
-      />
-      <div>{displayPerson}</div>
+      <AuthContext.Provider
+        value={{
+          authenticated: authenticated,
+          login: loginHandler,
+        }}>
+        <Cockpit
+          title={props.appTitle}
+          personsLength={personsState.person.length}
+          showPerson={showPesrsonState.showPerson}
+          clicked={togglePersonHandler}
+        />
+
+        <div>{displayPerson}</div>
+      </AuthContext.Provider>
     </Aux>
 
   );

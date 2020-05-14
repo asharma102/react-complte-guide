@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Person from './Person/Person';
+
 
 const persons = props => (
   props.persons.map((personList, index) => (
@@ -12,4 +14,10 @@ const persons = props => (
     />
   ))
 );
+persons.PropTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number,
+  click: PropTypes.func,
+  changed: PropTypes.func,
+};
 export default persons;

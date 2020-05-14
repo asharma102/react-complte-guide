@@ -6,9 +6,19 @@
     },
     "rules": {
         "no-console": "off",
-        "react/jsx-filename-extension": [1, {
-            "extensions": [".js", ".jsx"]
-        }],
-        "react/prop-types": 0
+        "indent": "off",
+        "react/jsx-indent": "off",
+        "react/jsx-indent-props": "off",
+        "no-unused-vars": 0,
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [".js", ".jsx"]
+            }
+        ],
+        "react/prop-types": 0,
+        "object-shorthand": 0,
+        "react/jsx-closing-bracket-location": 0,
+        "no-confusing-arrow": 0
     }
 }
